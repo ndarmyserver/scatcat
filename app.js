@@ -9,6 +9,7 @@ let lastDisplayedSecond = Math.ceil(remaining);
 const markers = { minute: 60, thirty: 30, ten: 10 };
 let audioUnlocked = false;
 
+const wordOvalEl = document.getElementById("wordOvalText");
 const wordEl = document.getElementById("word");
 const descEl = document.getElementById("description");
 const toggleBtn = document.getElementById("toggleDescription");
@@ -28,7 +29,8 @@ const beepsTriggered = new Set();
 fetch("data.json")
   .then(res => res.json())
   .then(json => {
-    data = shuffle(json);
+    // data = shuffle(json);
+    data = json;
     render();
   });
 
@@ -42,9 +44,10 @@ function render() {
   wordEl.textContent = formatWordForVertical(item.word.toUpperCase());
   descEl.textContent = item.description;
   toggleBtn.textContent = "SHOW";
+  wordOvalEl.textContent = item.word.toUpperCase();
 
   // Update empty squares text
-  const emptySquares = Math.max(13 - item.word.length, 0);
+  const emptySquares = Math.max(13 - item.word.replace(/[“”]/g, "").replace(/\s+/g, "").length, 0);
   const emptySquaresTextEl = document.getElementById("emptySquaresText");
   emptySquaresTextEl.textContent = `You should have ${emptySquares} empty squares.`;
 
@@ -71,7 +74,11 @@ nextBtn.onclick = () => {
 
 function formatWordForVertical(word) {
   // Remove spaces, split letters
-  return word.replace(/\s+/g, "").split("").join("\n");
+  return word
+    .replace(/[“”]/g, "") // remove angled double quotes
+    .replace(/\s+/g, "")  // remove spaces
+    .split("")
+    .join("\n");
 }
 
 for (const [name, seconds] of Object.entries(markers)) {

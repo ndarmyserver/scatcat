@@ -1,4 +1,9 @@
 :root {
+  --oval-height: 160px;
+  --oval-width: calc(var(--oval-height) * 3.423);
+  --oval-bottom-padding: 32px;
+  --word-oval-font-size: 20px;
+  --word-oval-letter-spacing: 1px;
   --word-font-size: 36px;
   --word-col-width: calc(var(--word-font-size) * 1.25);
   --description-font-size: 18px;
@@ -26,6 +31,33 @@ button {
   padding: 8px 16px;
   border-radius: 4px;
   text-align: center;
+}
+
+.word-oval {
+  position: fixed;
+  top: calc(-1 * var(--oval-height) / 2);
+  left: calc(var(--word-col-width) + (var(--word-col-width) / 2) - (var(--oval-width) / 2));
+
+  
+  width: var(--oval-width);
+
+  height: var(--oval-height);
+  background: #ffffff;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  padding-bottom: var(--oval-bottom-padding);
+  z-index: 10;
+}
+
+.word-oval span {
+  font-size: var(--word-oval-font-size);
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: var(--word-oval-letter-spacing);
 }
 
 #app {
@@ -191,6 +223,10 @@ button {
 /* iPhone 17 Pro */
 @media (min-width: 895px) {
   :root {
+    --oval-height: 60px;
+    --oval-bottom-padding: 10px;
+    --word-oval-font-size: 8px;
+    --word-oval-letter-spacing: 0px;
     --word-font-size: 24px;
     --description-font-size: 24px;
     --timer-font-size: 48px;
@@ -213,6 +249,10 @@ button {
 /* 12.9" iPad Pro */
 @media (min-width: 1024px) {
   :root {
+    --oval-height: 180px;
+    --oval-bottom-padding: 34px;
+    --word-oval-font-size: 20px;
+    --word-oval-letter-spacing: 1px;
     --word-font-size: 60px;
     --description-font-size: 60px;
     --timer-font-size: 72px;
@@ -255,6 +295,10 @@ button {
 /* Full HD display */
 @media (min-width: 1920px) {
   :root {
+    --oval-height: 200px;
+    --oval-bottom-padding: 36px;
+    --word-oval-font-size: 22px;
+    --word-oval-letter-spacing: 1px;
     --word-font-size: 64px;
     --description-font-size: 64px;
     --timer-font-size: 72px;
@@ -279,6 +323,10 @@ button {
 /* 4K display */
 @media (min-width: 3840px) {
   :root {
+    --oval-height: 300px;
+    --oval-bottom-padding: 48px;
+    --word-oval-font-size: 40px;
+    --word-oval-letter-spacing: 1px;
     --word-font-size: 120px;
     --description-font-size: 120px;
     --timer-font-size: 140px;

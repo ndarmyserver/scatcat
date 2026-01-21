@@ -1,10 +1,13 @@
 [
-  {
+{
+  "word": "Words with a “P”",
+  "description": "Words that include the letter P"
+},  {
     "word": "Monuments",
     "description": "Landmarks, monuments, and tourist traps"
   },
   {
-    "word": "Consonant K",
+    "word": "Consonant “K”",
     "description": "Words that include the letter K"
   },
   {
@@ -100,7 +103,7 @@
     "description": "Non-human tv and movie characters"
   },
   {
-    "word": "Words with a P",
+    "word": "Words with a “P”",
     "description": "Words that include the letter P"
   },
   {
