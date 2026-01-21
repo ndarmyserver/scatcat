@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Scattergories Categories</title>
+    <!-- App name -->
+  <meta name="apple-mobile-web-app-title" content="ScatCat">
+  <!-- Make it open fullscreen, hide Safari UI -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Status bar style (options: default, black, black-translucent)-->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Apple standard icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-touch-icon-120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-touch-icon-76.png">
+  <!-- Standard favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png">
+
+  <!-- Launch screen color on iOS -->
+  <meta name="theme-color" content="#e64134">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="app">
+    <!-- Column 1: Red / Word -->
+    <div class="word-rail red"></div>
+
+    <div class="word-column">
+      <div id="word"></div>
+    </div>
+
+    <div class="word-rail red"></div>
+
+    <!-- Column 2: Description -->
+    <div class="description-column">
+      <div class="description-content">
+        <div id="description" class="hidden"></div>
+        <button id="toggleDescription">SHOW</button>
+      </div>
+
+      <div class="length-instruction">
+        <div id="emptySquaresText"></div>
+      </div>
+      <div class="nav-buttons">
+        <button id="prev">PREVIOUS</button>
+        <button id="next">NEXT</button>
+      </div>
+    </div>
+
+    <!-- Column 3: Timer -->
+    <div class="timer-column">
+      <div class="timer-display" id="timer">2:00</div>
+      <div class="timer-buttons">
+        <button id="startStop" class="start">START</button>
+        <button id="reset">RESET</button>
+      </div>
+    </div>
+
+    <!-- Column 4: Visual Timer -->
+    <div class="progress-column">
+      <div class="markers">
+        <div class="marker minute"></div>
+        <div class="marker thirty"></div>
+        <div class="marker ten"></div>
+      </div>
+      <div class="progress-bar">
+        <div id="progressFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="beep" src="/audio/beep.mp3" preload="auto"></audio>
+  <audio id="buzzer" src="/audio/buzzer.mp3" preload="auto"></audio>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

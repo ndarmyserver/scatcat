@@ -1,0 +1,319 @@
+:root {
+  --word-font-size: 36px;
+  --word-col-width: calc(var(--word-font-size) * 1.25);
+  --description-font-size: 18px;
+  --timer-font-size: 24px;
+  --accent-color: #e64134;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+button {
+  all: unset; /* removes default button styles */
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  font-size: 16px;
+  background: #ccc;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+#app {
+  display: grid;
+  grid-template-columns:
+    var(--word-col-width) /* left rail */
+    var(--word-col-width) /* word column */
+    var(--word-col-width) /* right rail */
+    1fr /* description */
+    auto /* timer (width = numerals */
+    32px; /* progress bar */
+  height: 100vh;
+  width: 100vw;
+}
+
+/* WORD COLUMN */
+.word-rail {
+  inline-size: var(--word-col-width);
+  background: var(--accent-color);
+}
+
+.word-column {
+  width: var(--word-col-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#word {
+  font-size: var(--word-font-size);
+  font-weight: 700;
+
+  white-space: pre;
+  text-align: center;
+}
+
+.red {
+  background: var(--accent-color);
+}
+
+/* DESCRIPTION COLUMN */
+.description-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+  position: relative;
+}
+
+.description-content {
+  /* max-width: 700px; */
+}
+
+#description {
+  font-size: var(--description-font-size);
+  margin-bottom: 32px;
+  transition: opacity 0.3s ease;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.length-instruction {
+  position: absolute;
+  bottom: 63px;
+  left: 24px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #999999;
+}
+
+.nav-buttons {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 24px;
+}
+
+/* TIMER COLUMN */
+.timer-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 24px;
+}
+
+.timer-display {
+  font-size: var(--timer-font-size);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.timer-buttons {
+  display: grid;
+  grid-template-columns:  2fr 1fr;
+  gap: 24px;
+  width: 100%;
+}
+
+.start {
+  background: #2ecc71;
+}
+
+.stop {
+  background: var(--accent-color);
+  color: white;
+}
+
+/* PROGRESS COLUMN */
+.progress-column {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  height: 100%;
+  align-items: stretch;
+}
+
+.markers {
+  position: relative;
+  height: 100%;
+}
+
+.marker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: black;
+}
+
+.marker.minute {
+  top: 50%;
+}
+
+.marker.thirty {
+  top: 75%;
+}
+
+.marker.ten {
+  top: 91.6%;
+}
+
+.progress-bar {
+  /* background: #eee; */
+  position: relative;
+  height: 100%;
+}
+
+#progressFill {
+  background: var(--accent-color);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  transition: height 0.1s linear;
+}
+
+/* iPhone 17 Pro */
+@media (min-width: 895px) {
+  :root {
+    --word-font-size: 24px;
+    --description-font-size: 24px;
+    --timer-font-size: 48px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+
+  .description-column {
+    padding: 32px;
+  }
+
+  .length-instruction {
+    left: 36px;
+  }
+}
+
+/* 12.9" iPad Pro */
+@media (min-width: 1024px) {
+  :root {
+    --word-font-size: 60px;
+    --description-font-size: 60px;
+    --timer-font-size: 72px;
+  }
+
+  #app {
+    grid-template-columns:
+      var(--word-col-width) /* left rail */
+      var(--word-col-width) /* word column */
+      var(--word-col-width) /* right rail */
+      1fr /* description */
+      auto /* timer (width = numerals */
+      48px; /* progress bar */
+  }
+
+  button {
+    font-size: 24px;
+    padding: 12px 18px;
+  }
+
+  .description-column {
+    padding: 48px;
+  }
+
+  .length-instruction {
+    bottom: 92px;
+    left: 48px;
+    font-size: 24px;
+  }
+
+  .progress-column {
+    grid-template-columns: 24px 1fr;
+  }
+
+  .marker {
+    height: 4px;
+  }
+}
+
+/* Full HD display */
+@media (min-width: 1920px) {
+  :root {
+    --word-font-size: 64px;
+    --description-font-size: 64px;
+    --timer-font-size: 72px;
+  }
+
+  button {
+    font-size: 28px;
+    padding: 12px 24px;
+  }
+
+  .description-column {
+    padding: 48px;
+  }
+
+  .length-instruction {
+    bottom: 97px;
+    left: 48px;
+    font-size: 28px;
+  }
+}
+
+/* 4K display */
+@media (min-width: 3840px) {
+  :root {
+    --word-font-size: 120px;
+    --description-font-size: 120px;
+    --timer-font-size: 140px;
+  }
+
+  #app {
+    grid-template-columns:
+      var(--word-col-width) /* left rail */
+      var(--word-col-width) /* word column */
+      var(--word-col-width) /* right rail */
+      1fr /* description */
+      auto /* timer (width = numerals */
+      72px; /* progress bar */
+  }
+
+  button {
+    font-size: 48px;
+    padding: 16px 32px;
+  }
+
+  .description-column {
+    padding: 64px;
+  }
+
+  .length-instruction {
+    bottom: 148px;
+    left: 64px;
+    font-size: 56px;
+  }
+
+  .progress-column {
+    grid-template-columns: 36px 1fr;
+  }
+
+  .marker {
+    height: 8px;
+  }
+}
